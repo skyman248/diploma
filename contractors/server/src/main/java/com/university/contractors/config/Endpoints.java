@@ -56,4 +56,7 @@ public interface Endpoints {
 
     String PAYMENT_TABLE = ENDPOINTS_PREFIX + "/payment_table";
     String PAYMENT_TABLE_DETAIL = PAYMENT_TABLE + "/detail";
+
+    String PAYMENT_CURRENT = ENTITY_PREFIX + "/payment_current";
+    String PAYMENT_CURRENT_BY_ID = PAYMENT_CURRENT + ID_PARAMETER;
 }
