@@ -2,6 +2,7 @@ package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.model.PaymentCurrent;
+import com.university.contractors.service.PaymentService;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,12 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class PaymentCurrentController extends AbstractCrudControllerBase<Long, PaymentCurrent> {
 
-    public PaymentCurrentController(CrudRepository<PaymentCurrent, Long> crudRepository) {
+    private final PaymentService paymentService;
+
+    public PaymentCurrentController(CrudRepository<PaymentCurrent, Long> crudRepository,
+                                    PaymentService paymentService) {
         super(crudRepository);
+        this.paymentService = paymentService;
     }
 
     @Override
@@ -33,7 +38,9 @@ public class PaymentCurrentController extends AbstractCrudControllerBase<Long, P
     @Override
     @PostMapping(path = Endpoints.PAYMENT_CURRENT)
     PaymentCurrent create(PaymentCurrent entityToCreate) {
-        return super.create(entityToCreate);
+        final PaymentCurrent createdEntity = super.create(entityToCreate);
+        paymentService.recalculateFine(createdEntity);
+        return createdEntity;
     }
 
     @Override
