@@ -8,16 +8,25 @@ import com.university.contractors.model.PaymentCurrent;
 
 public class PaymentRecordDto {
 
-    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
-    private Date date;
+    private String monthName;
+    private Integer year;
+
     private List<PaymentCurrent> paymentsList;
 
-    public Date getDate() {
-        return date;
+    public String getMonthName() {
+        return monthName;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setMonthName(String monthName) {
+        this.monthName = monthName;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public List<PaymentCurrent> getPaymentsList() {
