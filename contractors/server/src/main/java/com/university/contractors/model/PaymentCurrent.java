@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class PaymentCurrent implements IdEntity<Long>{
 
@@ -25,7 +27,10 @@ public class PaymentCurrent implements IdEntity<Long>{
     private Float sum;
     private Float sumUsd;
 
+    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Date payDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Date regDate;
 
     @ManyToOne
