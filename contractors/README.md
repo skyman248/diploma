@@ -26,7 +26,7 @@
 - JDK 1.8 or higher (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - IntelliJ IDEA (https://www.jetbrains.com/idea/download/)
 
-#### Steps to import project:
+#### Steps to import project (outdated):
 1. Clone the repository 
 ``` 
 git clone git@github.com:olegbarmin/diploma.git 
