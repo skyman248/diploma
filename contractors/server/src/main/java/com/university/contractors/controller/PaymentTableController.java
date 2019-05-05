@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -16,7 +17,7 @@ import com.university.contractors.config.Endpoints;
 import com.university.contractors.controller.dto.PaymentRecordDto;
 import com.university.contractors.model.PaymentCurrent;
 import com.university.contractors.repository.ContractRepository;
-import com.university.contractors.repository.PaymentTableRepository;
+import com.university.contractors.repository.PaymentCurrentRepository;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,11 +38,11 @@ public class PaymentTableController {
             .build();
     private static final String MONTH_NAME_DATE_FORMAT_PATTERN = "MMMM";
 
-    private final PaymentTableRepository paymentTableRepository;
+    private final PaymentCurrentRepository paymentTableRepository;
     private final ContractRepository contractRepository;
 
     @Autowired
-    public PaymentTableController(PaymentTableRepository paymentTableRepository,
+    public PaymentTableController(PaymentCurrentRepository paymentTableRepository,
                                   ContractRepository contractRepository) {
         this.paymentTableRepository = paymentTableRepository;
         this.contractRepository = contractRepository;
@@ -51,12 +52,11 @@ public class PaymentTableController {
     public Iterable<PaymentRecordDto> get(@RequestParam(name = "contract_id") Long contractId,
                                           @RequestParam(name = "locale", defaultValue = DEFAULT_LOCALE_KEY) String localeKey) {
 
-        if(!SUPPORTED_LOCALES.keySet().contains(localeKey)){
+        if (!SUPPORTED_LOCALES.keySet().contains(localeKey)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     String.format("Locale '%s' is not supported. Supported locales are: %s",
                             localeKey, Joiner.on(", ").join(SUPPORTED_LOCALES.keySet())));
         }
-
 
         if (!contractRepository.existsById(contractId)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
