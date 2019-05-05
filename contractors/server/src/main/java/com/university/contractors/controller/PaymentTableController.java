@@ -3,6 +3,7 @@ package com.university.contractors.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -71,6 +72,11 @@ public class PaymentTableController {
                 .stream()
                 .map((Map.Entry<Date, List<PaymentCurrent>> dateListEntry) -> mapToPaymentRecordDto(dateListEntry, locale))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping(path = Endpoints.PAYMENT_TABLE_DETAIL, params = {"contract_id"})
+    public Iterable<PaymentCurrent> getDetailPayments(@RequestParam(name = "contract_id") Long contractId) {
+        return paymentTableRepository.getAllDetails(contractId, Collections.singletonList(1L));
     }
 
     private Date getDateRoundedToMonth(PaymentCurrent paymentCurrent) {

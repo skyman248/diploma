@@ -55,4 +55,5 @@ public interface Endpoints {
     String DIRECTION_BY_ID = DIRECTIONS + ID_PARAMETER;
 
     String PAYMENT_TABLE = ENDPOINTS_PREFIX + "/payment_table";
+    String PAYMENT_TABLE_DETAIL = PAYMENT_TABLE + "/detail";
 }
