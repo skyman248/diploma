@@ -60,6 +60,6 @@ public interface Endpoints {
     String PAYMENT_CURRENT = ENTITY_PREFIX + "/payment_current";
     String PAYMENT_CURRENT_BY_ID = PAYMENT_CURRENT + ID_PARAMETER;
 
-    String PAYMENT_FORM = ENTITY_PREFIX + "/payment_current";
+    String PAYMENT_FORM = ENTITY_PREFIX + "/payment_form";
     String PAYMENT_FORM_BY_ID = PAYMENT_FORM + ID_PARAMETER;
 }
