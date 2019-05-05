@@ -1,5 +1,5 @@
 package com.university.contractors.controller.dto;
 
-public enum Nationality {
+public enum StudentNationality {
     LOCAL, FOREIGN
 }

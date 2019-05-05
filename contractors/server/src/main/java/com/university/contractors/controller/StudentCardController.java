@@ -1,7 +1,7 @@
 package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
-import com.university.contractors.controller.dto.StudentCard;
+import com.university.contractors.controller.dto.StudentCardDto;
 import com.university.contractors.service.StudentCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class StudentCardController {
     }
 
     @GetMapping(Endpoints.STUDENT_CARD)
-    public StudentCard get(@PathVariable Long id) {
+    public StudentCardDto get(@PathVariable Long id) {
         return studentCardService.findStudentCard(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }

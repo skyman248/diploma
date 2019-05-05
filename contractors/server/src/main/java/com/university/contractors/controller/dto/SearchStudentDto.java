@@ -4,12 +4,12 @@ import com.university.contractors.model.*;
 
 import java.util.Date;
 
-public class SearchStudent {
+public class SearchStudentDto {
 
     private String surname;
     private String name;
     private Date dataOfBirth;
-    private Nationality nationality;
+    private StudentNationality nationality;
     private Country country;
     private String contractNumber;
     private Integer course;
@@ -45,11 +45,11 @@ public class SearchStudent {
         this.dataOfBirth = dataOfBirth;
     }
 
-    public Nationality getNationality() {
+    public StudentNationality getNationality() {
         return nationality;
     }
 
-    public void setNationality(Nationality nationality) {
+    public void setNationality(StudentNationality nationality) {
         this.nationality = nationality;
     }
 

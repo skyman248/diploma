@@ -1,11 +1,11 @@
 package com.university.contractors.repository;
 
 import com.google.common.collect.Lists;
-import com.university.contractors.controller.dto.Nationality;
-import com.university.contractors.controller.dto.SearchStudent;
+import com.university.contractors.controller.dto.StudentNationality;
+import com.university.contractors.controller.dto.SearchStudentDto;
 import com.university.contractors.model.Contract;
 import com.university.contractors.model.Country;
-import com.university.contractors.controller.dto.SearchStudentResult;
+import com.university.contractors.controller.dto.SearchStudentResultDto;
 import com.university.contractors.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,11 +32,11 @@ public class SearchStudentRepository {
         this.countryService = countryService;
     }
 
-    public List<SearchStudentResult> search(SearchStudent searchStudent) {
+    public List<SearchStudentResultDto> search(SearchStudentDto searchStudent) {
         final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        final CriteriaQuery<SearchStudentResult> query = criteriaBuilder.createQuery(SearchStudentResult.class);
+        final CriteriaQuery<SearchStudentResultDto> query = criteriaBuilder.createQuery(SearchStudentResultDto.class);
         final Root<Contract> contractRoot = query.from(Contract.class);
-        final CriteriaQuery<SearchStudentResult> criteria = query.multiselect(contractRoot);
+        final CriteriaQuery<SearchStudentResultDto> criteria = query.multiselect(contractRoot);
 
         final List<Predicate> predicateList = getListOfPredicates(searchStudent, criteriaBuilder, contractRoot, criteria);
         criteria.where(criteriaBuilder.and(predicateList.toArray(new Predicate[]{})));
@@ -44,7 +44,7 @@ public class SearchStudentRepository {
         return entityManager.createQuery(criteria).getResultList();
     }
 
-    private List<Predicate> getListOfPredicates(SearchStudent searchStudent, CriteriaBuilder criteriaBuilder, Root<Contract> contractRoot, CriteriaQuery<SearchStudentResult> criteria) {
+    private List<Predicate> getListOfPredicates(SearchStudentDto searchStudent, CriteriaBuilder criteriaBuilder, Root<Contract> contractRoot, CriteriaQuery<SearchStudentResultDto> criteria) {
         final List<Predicate> predicateList = Lists.newArrayList();
 
         predicateList.add(criteriaBuilder.equal(contractRoot.get("isBudget"), Boolean.FALSE));
@@ -66,9 +66,9 @@ public class SearchStudentRepository {
         }
 
         if (Objects.nonNull(searchStudent.getNationality())) {
-            final Nationality nationality = searchStudent.getNationality();
+            final StudentNationality nationality = searchStudent.getNationality();
             final Country localCountry = countryService.getLocalCountry();
-            if (nationality == Nationality.LOCAL) {
+            if (nationality == StudentNationality.LOCAL) {
                 predicateList.add(criteriaBuilder.equal(contractRoot.get("student").get("country"),
                         localCountry));
             } else {

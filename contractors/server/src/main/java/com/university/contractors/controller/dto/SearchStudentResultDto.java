@@ -8,7 +8,7 @@ import com.university.contractors.model.EducationLevel;
 import com.university.contractors.model.Faculty;
 import com.university.contractors.model.Student;
 
-public class SearchStudentResult {
+public class SearchStudentResultDto {
 
     private Student student;
     private Contract contract;
@@ -20,7 +20,7 @@ public class SearchStudentResult {
     private EducationLevel educationLevel;
 
     // Added for compatibility with Hibernate
-    public SearchStudentResult(Contract contract) {
+    public SearchStudentResultDto(Contract contract) {
         this.student = contract.getStudent();
         this.contract = contract;
         this.country = student.getCountry();

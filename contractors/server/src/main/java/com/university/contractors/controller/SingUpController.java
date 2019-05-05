@@ -1,7 +1,7 @@
 package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 import com.university.contractors.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class SingUpController {
     }
 
     @PostMapping(path = Endpoints.SIGN_UP)
-    public void singUpUser(@RequestBody SignUpUser userToSignUp) {
+    public void singUpUser(@RequestBody SignUpUserDto userToSignUp) {
         userService.signUpUser(userToSignUp);
     }
 

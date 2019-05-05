@@ -1,6 +1,6 @@
 package com.university.contractors.controller.dto;
 
-public class LoginUser {
+public class SignInUserDto {
 
     private String username;
     private String password;

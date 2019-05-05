@@ -3,9 +3,9 @@ package com.university.contractors.controller;
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.config.SecurityConstants;
 import com.university.contractors.config.TestBase;
-import com.university.contractors.controller.dto.LoginUser;
+import com.university.contractors.controller.dto.SignInUserDto;
 import com.university.contractors.controller.payload.LoginUserBuilder;
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 import com.university.contractors.controller.payload.SignUpUserBuilder;
 import com.university.contractors.model.IdEntity;
 import io.restassured.RestAssured;
@@ -42,7 +42,7 @@ public abstract class AbstractCrudControllerTest<I, E extends IdEntity<I>> exten
     public void setUp() {
         RestAssured.port = port;
 
-        final SignUpUser userJohn = SignUpUserBuilder.aSignUpUser()
+        final SignUpUserDto userJohn = SignUpUserBuilder.aSignUpUser()
                 .username(JOHN_USERNAME)
                 .password(JOHN_PASSWORD)
                 .confirmationPassword(JOHN_PASSWORD)
@@ -281,7 +281,7 @@ public abstract class AbstractCrudControllerTest<I, E extends IdEntity<I>> exten
     }
 
     private String requestToken(String username, String password) {
-        final LoginUser userToRequestTokenOf = LoginUserBuilder.aLoginUser()
+        final SignInUserDto userToRequestTokenOf = LoginUserBuilder.aLoginUser()
                 .username(username)
                 .password(password)
                 .build();

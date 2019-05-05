@@ -1,8 +1,8 @@
 package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
-import com.university.contractors.controller.dto.SearchStudent;
-import com.university.contractors.controller.dto.SearchStudentResult;
+import com.university.contractors.controller.dto.SearchStudentDto;
+import com.university.contractors.controller.dto.SearchStudentResultDto;
 import com.university.contractors.repository.SearchStudentRepository;
 import org.hibernate.TransientObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class SearchStudentController {
     }
 
     @PostMapping(path = Endpoints.SEARCH)
-    public List<SearchStudentResult> search(@RequestBody SearchStudent searchStudent) {
+    public List<SearchStudentResultDto> search(@RequestBody SearchStudentDto searchStudent) {
         try {
             return searchStudentRepository.search(searchStudent);
         } catch (RuntimeException exception) {

@@ -2,9 +2,9 @@ package com.university.contractors;
 
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.config.TestBase;
-import com.university.contractors.controller.dto.LoginUser;
+import com.university.contractors.controller.dto.SignInUserDto;
 import com.university.contractors.controller.payload.LoginUserBuilder;
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 import com.university.contractors.controller.payload.SignUpUserBuilder;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -31,7 +31,7 @@ public class AuthenticationTest extends TestBase {
     public void setUp() {
         RestAssured.port = port;
 
-        final SignUpUser userJohn = SignUpUserBuilder.aSignUpUser()
+        final SignUpUserDto userJohn = SignUpUserBuilder.aSignUpUser()
                 .username(USERNAME_TO_REGISTER)
                 .password(PASSWORD_TO_REGISTER)
                 .confirmationPassword(PASSWORD_TO_REGISTER)
@@ -45,7 +45,7 @@ public class AuthenticationTest extends TestBase {
 
     @Test
     public void shouldAuthenticateUsersWithValidCredentials() {
-        final LoginUser user = LoginUserBuilder.aLoginUser()
+        final SignInUserDto user = LoginUserBuilder.aLoginUser()
                 .username(USERNAME_TO_REGISTER)
                 .password(PASSWORD_TO_REGISTER)
                 .build();
@@ -59,7 +59,7 @@ public class AuthenticationTest extends TestBase {
     public void shouldUnAuthorizeUsersWithInvalidUsername() {
         final String invalidUsername = USERNAME_TO_REGISTER + "invalid";
 
-        final LoginUser user = LoginUserBuilder.aLoginUser()
+        final SignInUserDto user = LoginUserBuilder.aLoginUser()
                 .username(invalidUsername)
                 .password(PASSWORD_TO_REGISTER)
                 .build();
@@ -73,7 +73,7 @@ public class AuthenticationTest extends TestBase {
     public void shouldUnAuthorizeUsersWithInvalidPassword() {
         final String invalidPassword = PASSWORD_TO_REGISTER + "invalid";
 
-        final LoginUser user = LoginUserBuilder.aLoginUser()
+        final SignInUserDto user = LoginUserBuilder.aLoginUser()
                 .username(USERNAME_TO_REGISTER)
                 .password(invalidPassword)
                 .build();

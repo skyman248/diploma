@@ -1,6 +1,6 @@
 package com.university.contractors.config;
 
-import com.university.contractors.controller.dto.LoginUser;
+import com.university.contractors.controller.dto.SignInUserDto;
 import com.university.contractors.service.AuthenticationService;
 import com.university.contractors.service.EntityParseException;
 import com.university.contractors.service.EntityParser;
@@ -33,7 +33,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            final LoginUser user = entityParser.parseEntityFromRequest(request, LoginUser.class);
+            final SignInUserDto user = entityParser.parseEntityFromRequest(request, SignInUserDto.class);
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         } catch (EntityParseException exception) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

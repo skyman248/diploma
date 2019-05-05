@@ -1,6 +1,6 @@
 package com.university.contractors.service;
 
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 import com.university.contractors.model.User;
 import com.university.contractors.model.UserRole;
 import com.university.contractors.repository.UserRepository;
@@ -42,7 +42,7 @@ public class UserService {
         }
     }
 
-    public void signUpUser(SignUpUser userToSignUp) {
+    public void signUpUser(SignUpUserDto userToSignUp) {
         final String password = userToSignUp.getPassword();
         final String confirmationPassword = userToSignUp.getConfirmationPassword();
 

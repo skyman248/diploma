@@ -1,12 +1,12 @@
 package com.university.contractors.controller.payload;
 
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 
 public final class SignUpUserBuilder {
-    private SignUpUser signUpUser;
+    private SignUpUserDto signUpUser;
 
     private SignUpUserBuilder() {
-        signUpUser = new SignUpUser();
+        signUpUser = new SignUpUserDto();
     }
 
     public static SignUpUserBuilder aSignUpUser() {
@@ -28,7 +28,7 @@ public final class SignUpUserBuilder {
         return this;
     }
 
-    public SignUpUser build() {
+    public SignUpUserDto build() {
         return signUpUser;
     }
 }

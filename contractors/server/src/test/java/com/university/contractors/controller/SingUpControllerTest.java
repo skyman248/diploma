@@ -2,9 +2,9 @@ package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.config.TestBase;
-import com.university.contractors.controller.dto.LoginUser;
+import com.university.contractors.controller.dto.SignInUserDto;
 import com.university.contractors.controller.payload.LoginUserBuilder;
-import com.university.contractors.controller.dto.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUserDto;
 import com.university.contractors.controller.payload.SignUpUserBuilder;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -34,7 +34,7 @@ public class SingUpControllerTest extends TestBase {
 
     @Test
     public void shouldSignUpUser() {
-        final SignUpUser userToSignUp = getUserBuilder()
+        final SignUpUserDto userToSignUp = getUserBuilder()
                 .build();
 
         getPreparedGiven()
@@ -42,7 +42,7 @@ public class SingUpControllerTest extends TestBase {
                 .post(Endpoints.SIGN_UP)
                 .then().statusCode(HTTP_OK);
 
-        final LoginUser signedUpUser = LoginUserBuilder.aLoginUser()
+        final SignInUserDto signedUpUser = LoginUserBuilder.aLoginUser()
                 .username(userToSignUp.getUsername())
                 .password(userToSignUp.getPassword())
                 .build();
@@ -56,7 +56,7 @@ public class SingUpControllerTest extends TestBase {
 
     @Test
     public void shouldNotSignUpUserWithInvalidConfirmationPassword() {
-        final SignUpUser userToSignUp = getUserBuilder()
+        final SignUpUserDto userToSignUp = getUserBuilder()
                 .confirmationPassword(PASSWORD_TO_REGISTER + " mistake in confirmation password")
                 .build();
 
@@ -68,7 +68,7 @@ public class SingUpControllerTest extends TestBase {
 
     @Test
     public void shouldNotSignUpUserWithWithDuplicatedName() {
-        final SignUpUser userToSignUp = getUserBuilder()
+        final SignUpUserDto userToSignUp = getUserBuilder()
                 .build();
 
         getPreparedGiven()
@@ -86,7 +86,7 @@ public class SingUpControllerTest extends TestBase {
                 .then()
                 .statusCode(HTTP_UNAUTHORIZED);
 
-        final LoginUser signedUpUser = LoginUserBuilder.aLoginUser()
+        final SignInUserDto signedUpUser = LoginUserBuilder.aLoginUser()
                 .username(userToSignUp.getUsername())
                 .password(userToSignUp.getPassword())
                 .build();

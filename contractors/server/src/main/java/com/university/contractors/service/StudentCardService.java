@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.university.contractors.model.Contract;
 import com.university.contractors.model.Order;
 import com.university.contractors.model.Student;
-import com.university.contractors.controller.dto.StudentCard;
+import com.university.contractors.controller.dto.StudentCardDto;
 import com.university.contractors.repository.ContractRepository;
 import com.university.contractors.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class StudentCardService {
         this.contractRepository = contractRepository;
     }
 
-    public Optional<StudentCard> findStudentCard(Long studentId) {
+    public Optional<StudentCardDto> findStudentCard(Long studentId) {
         final Optional<Student> studentOptional = studentRepository.findById(studentId);
 
         if (!studentOptional.isPresent()) {
@@ -35,7 +35,7 @@ public class StudentCardService {
         }
 
 
-        final StudentCard studentCard = new StudentCard();
+        final StudentCardDto studentCard = new StudentCardDto();
         studentCard.setStudent(studentOptional.get());
 
         final Optional<List<Contract>> studentContracts = contractRepository.findByStudentId(studentId);

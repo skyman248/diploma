@@ -1,12 +1,12 @@
 package com.university.contractors.controller.payload;
 
-import com.university.contractors.controller.dto.LoginUser;
+import com.university.contractors.controller.dto.SignInUserDto;
 
 public final class LoginUserBuilder {
-    private LoginUser loginUser;
+    private SignInUserDto loginUser;
 
     private LoginUserBuilder() {
-        loginUser = new LoginUser();
+        loginUser = new SignInUserDto();
     }
 
     public static LoginUserBuilder aLoginUser() {
@@ -23,7 +23,7 @@ public final class LoginUserBuilder {
         return this;
     }
 
-    public LoginUser build() {
+    public SignInUserDto build() {
         return loginUser;
     }
 }

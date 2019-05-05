@@ -6,7 +6,7 @@ import com.university.contractors.model.Contract;
 import com.university.contractors.model.Order;
 import com.university.contractors.model.Student;
 
-public class StudentCard {
+public class StudentCardDto {
 
     private Student student;
     private Contract currentContract;
