@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -74,6 +73,10 @@ public class PaymentTableController {
                 .collect(Collectors.toList());
     }
 
+    private Date getDateRoundedToMonth(PaymentCurrent paymentCurrent) {
+        return DateUtils.round(paymentCurrent.getPayDate(), Calendar.MONTH);
+    }
+
     private PaymentRecordDto mapToPaymentRecordDto(Map.Entry<Date, List<PaymentCurrent>> dateListEntry, Locale locale) {
         final Date dateToFormat = dateListEntry.getKey();
 
@@ -91,9 +94,5 @@ public class PaymentTableController {
 
         paymentRecordDto.setPaymentsList(dateListEntry.getValue());
         return paymentRecordDto;
-    }
-
-    private Date getDateRoundedToMonth(PaymentCurrent paymentCurrent) {
-        return DateUtils.round(paymentCurrent.getPayDate(), Calendar.MONTH);
     }
 }
