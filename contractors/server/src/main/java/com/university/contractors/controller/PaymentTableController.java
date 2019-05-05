@@ -1,5 +1,6 @@
 package com.university.contractors.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import com.university.contractors.controller.dto.PaymentRecordDto;
 import com.university.contractors.model.PaymentCurrent;
 import com.university.contractors.repository.ContractRepository;
 import com.university.contractors.repository.PaymentTableRepository;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,7 @@ public class PaymentTableController {
 
         final Iterable<PaymentCurrent> paymentCurrentIterable = paymentTableRepository.getByContractIdOrderByPayDate(contractId);
         final Map<Date, List<PaymentCurrent>> paymentCurrentGroupByPayDate = StreamSupport.stream(paymentCurrentIterable.spliterator(), Boolean.FALSE)
-                .collect(Collectors.groupingBy(PaymentCurrent::getPayDate));
+                .collect(Collectors.groupingBy(this::getDateRoundedToMonth));
 
         return paymentCurrentGroupByPayDate.entrySet()
                 .stream()
@@ -54,5 +56,9 @@ public class PaymentTableController {
         paymentRecordDto.setDate(dateListEntry.getKey());
         paymentRecordDto.setPaymentsList(dateListEntry.getValue());
         return paymentRecordDto;
+    }
+
+    private Date getDateRoundedToMonth(PaymentCurrent paymentCurrent){
+        return DateUtils.round(paymentCurrent.getPayDate(), Calendar.MONTH);
     }
 }
