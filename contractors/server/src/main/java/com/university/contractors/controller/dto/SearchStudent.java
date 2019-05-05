@@ -1,4 +1,4 @@
-package com.university.contractors.controller.payload;
+package com.university.contractors.controller.dto;
 
 import com.university.contractors.model.*;
 

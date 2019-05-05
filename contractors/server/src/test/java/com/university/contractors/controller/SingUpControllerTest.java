@@ -2,9 +2,9 @@ package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
 import com.university.contractors.config.TestBase;
-import com.university.contractors.controller.payload.LoginUser;
+import com.university.contractors.controller.dto.LoginUser;
 import com.university.contractors.controller.payload.LoginUserBuilder;
-import com.university.contractors.controller.payload.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUser;
 import com.university.contractors.controller.payload.SignUpUserBuilder;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

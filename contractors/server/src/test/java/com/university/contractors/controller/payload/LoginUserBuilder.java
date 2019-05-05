@@ -1,5 +1,7 @@
 package com.university.contractors.controller.payload;
 
+import com.university.contractors.controller.dto.LoginUser;
+
 public final class LoginUserBuilder {
     private LoginUser loginUser;
 

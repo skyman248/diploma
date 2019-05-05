@@ -1,6 +1,6 @@
 package com.university.contractors.service;
 
-import com.university.contractors.controller.payload.SignUpUser;
+import com.university.contractors.controller.dto.SignUpUser;
 import com.university.contractors.model.User;
 import com.university.contractors.model.UserRole;
 import com.university.contractors.repository.UserRepository;

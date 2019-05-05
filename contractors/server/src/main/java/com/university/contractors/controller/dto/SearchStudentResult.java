@@ -1,4 +1,12 @@
-package com.university.contractors.model;
+package com.university.contractors.controller.dto;
+
+import com.university.contractors.model.Contract;
+import com.university.contractors.model.Country;
+import com.university.contractors.model.Direction;
+import com.university.contractors.model.EducationForm;
+import com.university.contractors.model.EducationLevel;
+import com.university.contractors.model.Faculty;
+import com.university.contractors.model.Student;
 
 public class SearchStudentResult {
 

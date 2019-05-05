@@ -1,6 +1,10 @@
-package com.university.contractors.model;
+package com.university.contractors.controller.dto;
 
 import java.util.List;
+
+import com.university.contractors.model.Contract;
+import com.university.contractors.model.Order;
+import com.university.contractors.model.Student;
 
 public class StudentCard {
 

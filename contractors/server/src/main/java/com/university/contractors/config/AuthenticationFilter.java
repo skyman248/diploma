@@ -1,6 +1,6 @@
 package com.university.contractors.config;
 
-import com.university.contractors.controller.payload.LoginUser;
+import com.university.contractors.controller.dto.LoginUser;
 import com.university.contractors.service.AuthenticationService;
 import com.university.contractors.service.EntityParseException;
 import com.university.contractors.service.EntityParser;

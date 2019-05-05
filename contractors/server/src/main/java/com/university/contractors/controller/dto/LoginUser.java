@@ -1,10 +1,9 @@
-package com.university.contractors.controller.payload;
+package com.university.contractors.controller.dto;
 
-public class SignUpUser {
+public class LoginUser {
 
     private String username;
     private String password;
-    private String confirmationPassword;
 
     public String getUsername() {
         return username;
@@ -20,13 +19,5 @@ public class SignUpUser {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getConfirmationPassword() {
-        return confirmationPassword;
-    }
-
-    public void setConfirmationPassword(String confirmationPassword) {
-        this.confirmationPassword = confirmationPassword;
     }
 }

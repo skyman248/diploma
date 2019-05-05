@@ -1,8 +1,8 @@
 package com.university.contractors.controller;
 
 import com.university.contractors.config.Endpoints;
-import com.university.contractors.controller.payload.SearchStudent;
-import com.university.contractors.model.SearchStudentResult;
+import com.university.contractors.controller.dto.SearchStudent;
+import com.university.contractors.controller.dto.SearchStudentResult;
 import com.university.contractors.repository.SearchStudentRepository;
 import org.hibernate.TransientObjectException;
 import org.springframework.beans.factory.annotation.Autowired;

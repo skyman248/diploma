@@ -1,5 +1,7 @@
 package com.university.contractors.controller.payload;
 
+import com.university.contractors.controller.dto.SignUpUser;
+
 public final class SignUpUserBuilder {
     private SignUpUser signUpUser;
 
