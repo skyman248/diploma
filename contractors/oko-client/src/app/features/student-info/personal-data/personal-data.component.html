@@ -8,27 +8,27 @@
     </div>
 
   </div>
-  <form (ngSubmit)="onSubmit()" #DataForm="ngForm">
+  <form (ngSubmit)="onSubmit()">
     <label><b>Персональні дані:</b></label>
     <div class="block">
       <div class="row">
         <div class="col-sm">
           <div class="form-group">
             <label for="firstname">Прізвище:</label>
-            <input class="form-control" type="text" name="firstname" #firstname="ngModel" ngModel required />
+            <input class="form-control" type="text" name="firstname" value="{{student.student.surname}}"/>
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="name">Ім'я:</label>
-            <input class="form-control" id="name" type="text" name="name" ngModel />
+            <input class="form-control" id="name" type="text" name="name" value="{{student.student.name}}"/>
           </div>
         </div>
 
         <div class="col-sm">
           <div class="form-group">
             <label for="patronymic">По батькові:</label>
-            <input class="form-control" id="patronymic" type="text" name="patronymic" ngModel />
+            <input class="form-control" id="patronymic" type="text" name="patronymic" value="{{student.student.middleName}}"/>
           </div>
         </div>
       </div>
@@ -37,17 +37,15 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="country">Країна:</label>
-            <select class="form-control" name="country" #country="ngModel" ngModel required>
-              <option>Украина</option>
-              <option>Россия</option>
+            <select class="form-control" name="country">
+              <option>{{student.country.countryNameUa}}</option>
             </select>
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="dateOfBirth">Дата народження:</label>
-            <input class="form-control" id="dateOfBirth" type="date" name="dateOfBirth" #dateOfBirth="ngModel" ngModel
-              required>
+            <input class="form-control" id="dateOfBirth" type="date" name="dateOfBirth" value="{{student.student.dateOfBirth}}">
           </div>
 
         </div>
@@ -61,18 +59,16 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="department">Факультет: </label>
-            <select class="form-control" name="department" #department="ngModel" ngModel required>
-              <option>Іноземних мов</option>
-              <option>Математики та інформатики</option>
+            <select class="form-control" name="department">
+              <option>{{student.faculty.facultyName}}</option>
             </select>
           </div>
         </div>
         <div class="col-sm">
           <div class="form-group">
             <label for="educform">Освітня програма:</label>
-            <select class="form-control" name="educprogram" #educprogram="ngModel" ngModel required>
-              <option>Іноземних мов</option>
-              <option>Математики та інформатики</option>
+            <select class="form-control" name="educprogram">
+              <option>{{student.direction.directionName}}</option>
             </select>
           </div>
         </div>
@@ -82,10 +78,8 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="language">Мова: </label>
-            <select class="form-control" name="language" #language="ngModel" ngModel required>
-              <option>Украинский</option>
-              <option>Русский</option>
-              <option>English</option>
+            <select class="form-control" name="language">
+              <option>{{student.contract.educationLanguage.educLanguageName}}</option>
             </select>
           </div>
         </div>
@@ -93,7 +87,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="course">Курс:</label>
-            <input class="form-control" type="number" min="1" name="course" #course="ngModel" ngModel required>
+            <input class="form-control" type="number" min="1" name="course" value="{{student.course}}">
           </div>
         </div>
       </div>
@@ -102,9 +96,8 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="educform">Форма навчання:</label>
-            <select class="form-control" name="educform" #educform="ngModel" ngModel required>
-              <option>Заочна</option>
-              <option>Бюджетна</option>
+            <select class="form-control" name="educform">
+              <option>{{student.educationForm.educFormName}}</option>
             </select>
           </div>
         </div>
@@ -112,9 +105,8 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="level">Рівень:</label>
-            <select class="form-control" name="level" #level="ngModel" ngModel required>
-              <option>Бакалар</option>
-              <option>Магистр</option>
+            <select class="form-control" name="level">
+              <option>{{student.educationLevel.educLevelName}}</option>
             </select>
           </div>
         </div>
@@ -124,9 +116,8 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="higheduc">Вища освіта:</label>
-            <select class="form-control" name="higheduc" #higheduc="ngModel" ngModel required>
-              <option>1 высшее</option>
-              <option>2 высших</option>
+            <select class="form-control" name="higheduc">
+              <option>{{student.contract.educationProgram.educProgName}}</option>
             </select>
           </div>
         </div>
@@ -134,8 +125,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="countOfYears">Кількість років навчання:</label>
-            <input class="form-control" type="number" min="1" name="countOfYears" #countOfYears="ngModel" ngModel
-              required>
+            <input class="form-control" type="number" min="1" name="countOfYears" value="{{student.contract.yearsOfEduc}}">
           </div>
         </div>
       </div>
@@ -144,7 +134,7 @@
         <div class="col-sm">
           <div class="form-group">
             <label for="dataEnter">Дата зачислення:</label>
-            <input class="form-control" type="date" name="dataEnter">
+            <input class="form-control" type="text" name="dataEnter" value="{{student.contract.dateIn}}">
           </div>
         </div>
 
@@ -247,7 +237,7 @@
     <div class="row">
       <div class="col-sm">
         <button class="btn btn-danger" (click)="close()">Закрити</button>
-        <button class="btn btn-success" type="submit" [disabled]="!DataForm.valid">Зберегти</button>
+        <button class="btn btn-success" type="submit">Зберегти</button>
       </div>
     </div>
 

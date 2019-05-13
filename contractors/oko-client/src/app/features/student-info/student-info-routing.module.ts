@@ -10,6 +10,7 @@ const routes: Routes = [
   {
     path: '',
     component: StudentInfoComponent,
+    data: {student: 'pesos'},
     children: [
       {
         path: 'passport',

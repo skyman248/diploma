@@ -1,0 +1,19 @@
+
+button {
+    margin:5px
+}
+.form-group{
+    margin-bottom: 5px;
+}
+
+form{
+    margin-top: 10px;
+}
+.col-sm-2.col-form-label{
+    width:100px;
+    padding: 5px;
+    justify-content: flex-start
+
+
+}
+

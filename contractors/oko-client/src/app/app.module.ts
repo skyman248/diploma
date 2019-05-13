@@ -8,6 +8,7 @@ import { LoginModule } from './features/login/login.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MenuLayoutModule } from './layouts/menu-layout/menu-layout.module';
+import { StudentService } from './services/student/student.service';
 
 
 
@@ -27,7 +28,7 @@ import { MenuLayoutModule } from './layouts/menu-layout/menu-layout.module';
     MenuLayoutModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

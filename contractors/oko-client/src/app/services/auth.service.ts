@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = true;
+  isLoggedIn = false;
   constructor(
     private localStorageService: LocalStorageService,
     private http: HttpClient) {
