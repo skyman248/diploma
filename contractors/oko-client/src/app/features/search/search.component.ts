@@ -43,21 +43,7 @@ export class SearchComponent implements OnInit {
       private studentService: StudentService,
       private router: Router,
     ) {
-      this.searchForm = this.fb.group({
-        name: [''],
-        surname: [''],
-        dataOfBirth: [''],
-        faculty: [null],
-        direction: [null],
-        educationLevel: [null],
-        educationProgram: [null],
-        educationLanguage: [null],
-        educationForm: [null],
-        arrivalLine: [null],
-        country: [null],
-        course: [null],
-        contractNumber: [null],
-      });
+      this.resetForm();
     }
 
   ngOnInit() {
@@ -69,6 +55,24 @@ export class SearchComponent implements OnInit {
     this.arrivalLines$ = this.entities.getAllArrivalLines();
     this.countries$ = this.entities.getAllCountries();
     this.searchResult$ = this.searchService.search({});
+  }
+
+  public resetForm(): void {
+    this.searchForm = this.fb.group({
+      name: [''],
+      surname: [''],
+      dataOfBirth: [''],
+      faculty: [null],
+      direction: [null],
+      educationLevel: [null],
+      educationProgram: [null],
+      educationLanguage: [null],
+      educationForm: [null],
+      arrivalLine: [null],
+      country: [null],
+      course: [null],
+      contractNumber: [null],
+    });
   }
 
   public onSubmit(): void {
